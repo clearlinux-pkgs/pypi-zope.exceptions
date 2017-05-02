@@ -4,7 +4,7 @@
 #
 Name     : zope.exceptions
 Version  : 4.1.0
-Release  : 2
+Release  : 3
 URL      : http://pypi.debian.net/zope.exceptions/zope.exceptions-4.1.0.tar.gz
 Source0  : http://pypi.debian.net/zope.exceptions/zope.exceptions-4.1.0.tar.gz
 Summary  : Zope Exceptions
