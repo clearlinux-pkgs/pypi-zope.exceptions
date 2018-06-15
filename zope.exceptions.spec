@@ -4,13 +4,14 @@
 #
 Name     : zope.exceptions
 Version  : 4.2.0
-Release  : 10
+Release  : 11
 URL      : http://pypi.debian.net/zope.exceptions/zope.exceptions-4.2.0.tar.gz
 Source0  : http://pypi.debian.net/zope.exceptions/zope.exceptions-4.2.0.tar.gz
 Summary  : Zope Exceptions
 Group    : Development/Tools
 License  : ZPL-2.1
 Requires: zope.exceptions-python3
+Requires: zope.exceptions-license
 Requires: zope.exceptions-python
 Requires: Sphinx
 Requires: setuptools
@@ -21,17 +22,23 @@ BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
 BuildRequires : zope.interface
-BuildRequires : zope.testrunner-python
 
 %description
 zope.exceptions
         =================
+
+%package license
+Summary: license components for the zope.exceptions package.
+Group: Default
+
+%description license
+license components for the zope.exceptions package.
+
 
 %package python
 Summary: python components for the zope.exceptions package.
@@ -59,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512997361
+export SOURCE_DATE_EPOCH=1529092151
 python3 setup.py build -b py3
 
 %check
@@ -69,6 +76,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/zope.exceptions
+cp LICENSE.txt %{buildroot}/usr/share/doc/zope.exceptions/LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -76,6 +85,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/zope.exceptions/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
