@@ -4,16 +4,15 @@
 #
 Name     : zope.exceptions
 Version  : 4.3
-Release  : 18
+Release  : 19
 URL      : https://files.pythonhosted.org/packages/46/14/295359a015e9fccbb6bb7247698478e4bf54c8f0f7e62b5058135433c145/zope.exceptions-4.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/46/14/295359a015e9fccbb6bb7247698478e4bf54c8f0f7e62b5058135433c145/zope.exceptions-4.3.tar.gz
 Summary  : Zope Exceptions
 Group    : Development/Tools
 License  : ZPL-2.1
-Requires: zope.exceptions-python3
-Requires: zope.exceptions-license
-Requires: zope.exceptions-python
-Requires: Sphinx
+Requires: zope.exceptions-license = %{version}-%{release}
+Requires: zope.exceptions-python = %{version}-%{release}
+Requires: zope.exceptions-python3 = %{version}-%{release}
 Requires: setuptools
 Requires: zope.interface
 BuildRequires : buildreq-distutils3
@@ -63,18 +62,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538679214
+export SOURCE_DATE_EPOCH=1541281286
 python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/zope.exceptions
-cp LICENSE.txt %{buildroot}/usr/share/doc/zope.exceptions/LICENSE.txt
+mkdir -p %{buildroot}/usr/share/package-licenses/zope.exceptions
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/zope.exceptions/LICENSE.txt
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -85,7 +84,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/doc/zope.exceptions/LICENSE.txt
+/usr/share/package-licenses/zope.exceptions/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
