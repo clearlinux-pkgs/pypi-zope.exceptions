@@ -4,7 +4,7 @@
 #
 Name     : zope.exceptions
 Version  : 4.3
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/46/14/295359a015e9fccbb6bb7247698478e4bf54c8f0f7e62b5058135433c145/zope.exceptions-4.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/46/14/295359a015e9fccbb6bb7247698478e4bf54c8f0f7e62b5058135433c145/zope.exceptions-4.3.tar.gz
 Summary  : Zope Exceptions
@@ -23,6 +23,7 @@ BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
 BuildRequires : zope.interface
+BuildRequires : zope.testrunner-python
 
 %description
 zope.exceptions
@@ -56,24 +57,32 @@ python3 components for the zope.exceptions package.
 
 %prep
 %setup -q -n zope.exceptions-4.3
+cd %{_builddir}/zope.exceptions-4.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1541281286
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1576018095
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/zope.exceptions
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/zope.exceptions/LICENSE.txt
+cp %{_builddir}/zope.exceptions-4.3/LICENSE.txt %{buildroot}/usr/share/package-licenses/zope.exceptions/a0b53f43aab58b46bf79ba756c50771c605ab4c5
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -84,7 +93,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/zope.exceptions/LICENSE.txt
+/usr/share/package-licenses/zope.exceptions/a0b53f43aab58b46bf79ba756c50771c605ab4c5
 
 %files python
 %defattr(-,root,root,-)
