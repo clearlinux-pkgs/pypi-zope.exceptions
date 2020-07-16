@@ -1,5 +1,5 @@
 PKG_NAME := zope.exceptions
-URL = https://files.pythonhosted.org/packages/46/14/295359a015e9fccbb6bb7247698478e4bf54c8f0f7e62b5058135433c145/zope.exceptions-4.3.tar.gz
+URL = https://files.pythonhosted.org/packages/41/c5/84f68fa73055d6a6937e55ee31888e5a8ca4a877a192e4a844f9fcacd00d/zope.exceptions-4.4.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
