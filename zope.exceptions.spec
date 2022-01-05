@@ -4,7 +4,7 @@
 #
 Name     : zope.exceptions
 Version  : 4.4
-Release  : 41
+Release  : 42
 URL      : https://files.pythonhosted.org/packages/41/c5/84f68fa73055d6a6937e55ee31888e5a8ca4a877a192e4a844f9fcacd00d/zope.exceptions-4.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/41/c5/84f68fa73055d6a6937e55ee31888e5a8ca4a877a192e4a844f9fcacd00d/zope.exceptions-4.4.tar.gz
 Summary  : Zope Exceptions
@@ -13,16 +13,14 @@ License  : ZPL-2.1
 Requires: zope.exceptions-license = %{version}-%{release}
 Requires: zope.exceptions-python = %{version}-%{release}
 Requires: zope.exceptions-python3 = %{version}-%{release}
-Requires: setuptools
-Requires: zope.interface
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
 BuildRequires : py-python
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(zope.interface)
 BuildRequires : pytest
-BuildRequires : setuptools
 BuildRequires : tox
 BuildRequires : virtualenv
-BuildRequires : zope.interface
 BuildRequires : zope.testrunner-python
 
 %description
@@ -67,7 +65,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1594928138
+export SOURCE_DATE_EPOCH=1641415659
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
