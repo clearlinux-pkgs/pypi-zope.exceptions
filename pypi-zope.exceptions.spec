@@ -4,10 +4,10 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-zope.exceptions
-Version  : 5.0
-Release  : 55
-URL      : https://files.pythonhosted.org/packages/21/4e/2ab1b98874c5457fd500127675634dacb1586ab8c78fa14fac6f6c9c2dc4/zope.exceptions-5.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/21/4e/2ab1b98874c5457fd500127675634dacb1586ab8c78fa14fac6f6c9c2dc4/zope.exceptions-5.0.tar.gz
+Version  : 5.0.1
+Release  : 56
+URL      : https://files.pythonhosted.org/packages/31/e1/557986e906763755c5de872f9a9854aca22fb546de578f735495963b5b9a/zope.exceptions-5.0.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/31/e1/557986e906763755c5de872f9a9854aca22fb546de578f735495963b5b9a/zope.exceptions-5.0.1.tar.gz
 Summary  : Zope Exceptions
 Group    : Development/Tools
 License  : ZPL-2.1
@@ -64,10 +64,10 @@ python3 components for the pypi-zope.exceptions package.
 
 
 %prep
-%setup -q -n zope.exceptions-5.0
-cd %{_builddir}/zope.exceptions-5.0
+%setup -q -n zope.exceptions-5.0.1
+cd %{_builddir}/zope.exceptions-5.0.1
 pushd ..
-cp -a zope.exceptions-5.0 buildavx2
+cp -a zope.exceptions-5.0.1 buildavx2
 popd
 
 %build
@@ -75,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688056283
+export SOURCE_DATE_EPOCH=1689091006
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
