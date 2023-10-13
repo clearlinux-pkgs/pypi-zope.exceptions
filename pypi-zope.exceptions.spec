@@ -5,7 +5,7 @@
 #
 Name     : pypi-zope.exceptions
 Version  : 5.0.1
-Release  : 57
+Release  : 58
 URL      : https://files.pythonhosted.org/packages/31/e1/557986e906763755c5de872f9a9854aca22fb546de578f735495963b5b9a/zope.exceptions-5.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/31/e1/557986e906763755c5de872f9a9854aca22fb546de578f735495963b5b9a/zope.exceptions-5.0.1.tar.gz
 Summary  : Zope Exceptions
